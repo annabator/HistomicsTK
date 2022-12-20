@@ -15,5 +15,5 @@ __all__ = (
     'utils',
     'annotations_and_masks',
     'saliency',
-    'workflows',
+    'workflows'
 )

@@ -11,9 +11,7 @@ from histomicstk.preprocessing.color_deconvolution.rgb_separate_stains_macenko_p
     rgb_separate_stains_macenko_pca
 from histomicstk.preprocessing.color_deconvolution.rgb_separate_stains_xu_snmf import \
     rgb_separate_stains_xu_snmf
-from histomicstk.preprocessing.color_deconvolution.stain_color_map import \
-    stain_color_map
-
+import define_stains 
 from ._linalg import normalize
 from .complement_stain_matrix import complement_stain_matrix
 
@@ -129,7 +127,7 @@ def _reorder_stains(W, stains=None):
     assert len(stains) == 2, "Only two-stain matrices are supported for now."
 
     def _get_channel_order(W):
-        first = find_stain_index(stain_color_map[stains[0]], W)
+        first = find_stain_index(define_stains.stains[stains[0]], W)
         second = 1 - first
         # If 2 stains, third "stain" is cross product of 1st 2 channels
         # calculated using complement_stain_matrix()

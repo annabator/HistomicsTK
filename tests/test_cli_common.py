@@ -31,6 +31,7 @@ import histomicstk.preprocessing.color_normalization as htk_cnorm
 import histomicstk.segmentation.nuclear as htk_nuclear
 import histomicstk.utils as htk_utils
 from histomicstk.cli import utils as cli_utils
+import histomicstk.preprocessing.color_deconvolution.stain_color_map_custom as stain_color_map_custom 
 
 from .datastore import datastore
 
@@ -45,7 +46,7 @@ class TestCliCommon:
             stain_2='custom',
             stain_2_vector=[0.1, 0.2, 0.3],
         )
-        expected = np.array([htk_cdeconv.stain_color_map['hematoxylin'],
+        expected = np.array([htk_cdeconv.stain_color_map_custom.color_map['hematoxylin'],
                              [0.1, 0.2, 0.3]]).T
         np.testing.assert_allclose(cli_utils.get_stain_matrix(args, 2),
                                    expected)

@@ -12,8 +12,7 @@ from histomicstk.preprocessing.color_deconvolution.color_convolution import \
     color_convolution
 from histomicstk.preprocessing.color_deconvolution.color_deconvolution import (
     color_deconvolution_routine, stain_unmixing_routine)
-from histomicstk.preprocessing.color_deconvolution.stain_color_map import \
-    stain_color_map
+import define_stains 
 
 
 def deconvolution_based_normalization(
@@ -112,7 +111,7 @@ def deconvolution_based_normalization(
     if all(j is None for j in [W_target, im_target]):
         # Normalize to 'ideal' stain matrix if none is provided
         W_target = np.array(
-            [stain_color_map[stains[0]], stain_color_map[stains[1]]]).T
+            [define_stains.stains[stains[0]], define_stains.stains[stains[1]]]).T
         W_target = complement_stain_matrix(W_target)
 
     elif im_target is not None:
