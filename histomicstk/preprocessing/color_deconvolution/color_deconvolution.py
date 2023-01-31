@@ -212,7 +212,7 @@ def stain_unmixing_routine(
         raise ValueError("Unknown/Unimplemented deconvolution method.")
 
     # get W_source
-    W_source = stain_deconvolution(im_rgb, **stain_unmixing_params)
+    W_source = stain_deconvolution(im_rgb, I_0=255, **stain_unmixing_params)
 
     # If Macenco method, reorder channels in W_target and W_source as desired.
     # This is actually a necessary step in macenko's method since we're
